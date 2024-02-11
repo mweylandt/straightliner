@@ -1,0 +1,19 @@
+Package: straightliner
+Title: Check Survey Responses Using a Variety of Straightlining Measures
+Version: 0.9.0.0
+Date: 
+Authors@R: 
+    person("Max", "weylandt", , "mweylandt@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8590-4145"))
+Description: This package implements several quantiative measures of straigtlining
+    as descriped in Kim et al. (2019). It offers a user-friendly way to assess 
+    whether individual are straightlining, or compare sets of questions against 
+    one another to see if people straightline more in some batteries than in others.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    dplyr,
+    magrittr,
+    rlang

@@ -1,0 +1,71 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# straightliner <img src="man/figures/logo.png" align="right" height="138" />
+ 
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package implements the quantitative measures of straightlining outlined by [Kim et al. (2019)](https://doi.org/10.1177/0894439317752406). The package includes measures for straightlining on the individual level, but can also generate a report on how much straightlining happens across a set (or more) of question.
+
+## Installation
+
+You can install the development version of straightliner from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("mweylandt/straightliner")
+```
+
+## Example
+
+To see which respondents are straightlining, use `straightlining`
+
+```{r straightlining}
+library(straightliner)
+
+survey <- data.frame("respondent" = c("A", "B", "C"),
+"item1" = c(5, 5, 4),
+"item2" = c(5, 5, 2),
+"item3" = c(5, 5, 5),
+"item4" = c(5, 1, 3))
+
+st_results <- straightlining(survey, varnames = c("item1", "item3" ,"item4"))
+st_results
+```
+
+This returns a dataframe where each row is a respondent and each column how they performed on a particular measure. You can cbind this to your original dataset if you want. Alternatively, you can pass the argument `keep_original = TRUE` to return your original dataset plus these measures.
+
+To compare batteries of questions to one another, use the `straightling_qset()` function. This one needs a named list with one entry for each set of questions, so that it can output a decent table:
+
+```{r straightlining_qset}
+batteries <- list("first two" = c("item1", "item2"),
+                   "last two" = c(4,5))
+
+straightlining_qset(survey, batteries, measures = c("mrp", "spv"))
+```
+
+## Measures
+For details on the measures call `?straightlining()` to pull up the documentation and see the 'details' section.
+
+## Notes
+
+both `straightlining` and `straightlining_qset` automatically convert the passed data to numeric if it is not -- these calculations don't work otherwise. They will warn you if this happens, and let you know how many levels are present in the data for each variable. If you design a battery where all responses have the same amount of levels in the survey (say a 5-point likert) but on one of the questions people only pick the bottom 4, then the conversion to numbers will cause a misalignment across this battery and render these statistics _useless_.
+
+## Roadmap
+
+- This package has some different functions than [`careless`](https://github.com/ryentes/careless), which is an excellent R package. With time I hope to integrate their straightlining measures here too, to make it a one-stop shop.
+- Examples in the docs won't work
+
