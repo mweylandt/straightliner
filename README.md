@@ -11,7 +11,7 @@ outlined by [Kim et
 al. (2019)](https://doi.org/10.1177/0894439317752406). The package
 includes measures for straightlining on the individual level, but can
 also generate a report on how much straightlining happens across a set
-(or more) of questions.
+(or several sets) of questions.
 
 ## Installation
 
