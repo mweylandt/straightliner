@@ -84,7 +84,7 @@ $i$ refers to the respondent, and $j$ is the counter for responses.
 
 - "sd": Battery _Standard Deviation_: simply calculates the
 standard deviation of the battery for each respondent. Lower values
-indicate more straightlining.}
+indicate more straightlining.
 
 - "spv": _Scale Point Variation_ (Linville, Salovey, Fischer 1986;
 who called it _probability of differentiation_):
